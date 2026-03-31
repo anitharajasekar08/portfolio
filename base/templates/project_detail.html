@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="project-detail">
+
+    <div class="detail-container">
+
+        <div class="detail-header">
+            <h1>{{ project.title }}</h1>
+        </div>
+
+        <div class="detail-body">
+
+            <div class="detail-image">
+                <img src="{{ project.image.url }}" alt="">
+            </div>
+
+            <div class="detail-info">
+
+                <h3>Project Overview</h3>
+                <p>{{ project.description }}</p>
+
+                <h3>Technologies Used</h3>
+                <p>{{ project.technologies }}</p>
+
+                <div class="detail-buttons">
+                    <a href="{{ project.github_link }}" target="_blank" class="btn">
+                        View GitHub
+                    </a> 
+
+                    {% if project.live_link %}
+                    <a href="{{ project.live_link }}" target="_blank" class="btn-outline">
+                        Live Demo
+                    </a>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

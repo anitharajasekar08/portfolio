@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anitha Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Anitha - Python Full Stack Developer skilled in Django, HTML, CSS, JavaScript and MySQL. View projects and contact for opportunities.">
+    <meta name="keywords" content="Python Developer, Django Developer, Full Stack Developer, Portfolio">
+    <meta name="author" content="Anitha">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/django image.jpg' %}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Anitha</div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    {% if messages %}
+    <div style="text-align:center; padding:10px;">
+        {% for message in messages %}
+        <p style="color: #3b82f6;">{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Anitha Rajasekaran | Python Full Stack Developer</p>
+        <div class="socials">
+            <a href="anitha-r-7b3662351"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/anitharajasekar08"><i class="fab fa-github"></i></a>
+
+        </div>
+    </footer>
+    <script>
+        const texts = ["Python Developer", "Django Developer", "Full Stack Developer"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+
+            document.querySelector(".typing").textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 1000);
+            } else {
+                setTimeout(type, 100);
+            }
+        })();
+    </script>
+</body>
+
+</html>

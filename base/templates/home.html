@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- HOME -->
+<section id="home" class="hero">
+
+    <div class="hero-container">
+
+        <div class="hero-left">
+            <h4>Hello, I'm</h4>
+            <h1>Anitha</h1>
+            <h3>Python Full Stack Developer</h3>
+
+            <p>
+                I build scalable backend systems and responsive web applications
+                with clean architecture and modern UI design.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="{% static 'pdf/Anitha Resumee.pdf' %}" target="_blank" class="btn-outline">Download CV</a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <img src="{% static 'images/photo me.jpeg' %}" alt="Anitha">
+        </div>
+
+    </div>
+
+</section>
+<section id="summary">
+    <div class="container">
+        <h2 class="section-title">Professional Summary</h2>
+
+        <p>
+            I am an aspiring Python Full Stack Developer with a strong foundation in building dynamic and responsive web
+            applications using Python, Django, HTML, CSS, JavaScript, React.js, and MySQL. I recently completed my
+            Master of Computer Applications (MCA) with a CGPA of 8.89, where I gained practical experience in both
+            frontend and backend development.
+
+            My primary project is a Django-based E-Commerce web application developed using HTML, CSS, JavaScript, and
+            Django, where I implemented product listings, user interactions, and essential e-commerce functionalities.
+            In addition, I developed a personal portfolio website using Django to showcase my projects and technical
+            skills, and a responsive business website using React.js, HTML, and CSS.
+
+            I am passionate about building user-friendly, scalable web applications and continuously improving my
+            technical skills. I am eager to contribute to innovative development teams and apply my knowledge to
+            real-world software solutions.
+        </p>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-container">
+        <img src="{% static 'images/django image.jpg' %}" alt="About Image">
+        <div>
+            <p>
+                I am an aspiring Python Full Stack Developer with skills in Python, Django, HTML, CSS, JavaScript,
+                React.js, and MySQL. I have experience building responsive web applications and developing backend
+                functionality using Django. My primary project is a Django-based E-Commerce website, where I implemented
+                dynamic features and user-friendly interfaces. I am passionate about learning new technologies and
+                building scalable web applications while continuously improving my development skills.
+            </p>
+        </div>
+    </div>
+</section>
+<section id="highlights">
+    <h2 class="section-title">Key Highlights</h2>
+
+    <div class="highlight-grid">
+        <div>
+            <h3>✔ Full Stack Development</h3>
+            <p>Experienced in developing complete web applications using Python, Django, HTML, CSS, JavaScript, and
+                React.js, handling both frontend interfaces and backend functionality.</p>
+        </div>
+
+        <div>
+            <h3>✔ E-Commerce Web Application</h3>
+            <p>Developed a dynamic E-Commerce website using Django, HTML, CSS, and JavaScript with product listings,
+                user-friendly interface, and efficient backend integration.</p>
+        </div>
+
+        <div>
+            <h3>✔ Django Portfolio Website</h3>
+            <p>Designed and developed a personal portfolio website using Django to showcase projects, technical skills,
+                and professional profile with responsive design.</p>
+        </div>
+        <div>
+            <h3>✔ React.js Web Development</h3>
+            <p>Built responsive and interactive websites using React.js with reusable components, ensuring better
+                performance and maintainable code structure.</p>
+        </div>
+
+        <div>
+            <h3>✔ Responsive Web Design</h3>
+            <p>Skilled in creating mobile-friendly and responsive layouts using HTML, CSS, and Bootstrap to ensure
+                seamless experience across all devices.</p>
+        </div>
+
+        <div>
+            <h3>✔ Database Management</h3>
+            <p>Knowledge of MySQL database design and management for storing, retrieving, and handling application data
+                efficiently.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<!-- SKILLS -->
+<!-- SKILLS -->
+<section id="skills">
+    <h2 class="section-title">Technical Expertise</h2>
+
+    <div class="skills-grid">
+
+        <!-- Backend -->
+        <div class="skill-card">
+            <h3>Backend Development</h3>
+            <ul>
+                <li><i class="fab fa-python"></i> Python</li>
+                <li><i class="fas fa-server"></i> Django</li>
+                <li><i class="fas fa-database"></i> REST APIs</li>
+            </ul>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-card">
+            <h3>Frontend Development</h3>
+            <ul>
+                <li><i class="fab fa-html5"></i> HTML5</li>
+                <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                <li><i class="fab fa-js"></i> JavaScript</li>
+            </ul>
+        </div>
+
+        <!-- Database -->
+        <div class="skill-card">
+            <h3>Database</h3>
+            <ul>
+                <li><i class="fas fa-database"></i> MySQL</li>
+                <li><i class="fas fa-table"></i> SQLite</li>
+            </ul>
+        </div>
+
+        <!-- Tools -->
+        <div class="skill-card">
+            <h3>Tools & Platforms</h3>
+            <ul>
+                <li><i class="fab fa-github"></i> Git & GitHub</li>
+                <li><i class="fas fa-cloud"></i> Deployment</li>
+                <li><i class="fas fa-code"></i> VS Code</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+<!-- PROJECTS -->
+<section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-container">
+        {% for project in projects %}
+        <div class="project-card">
+
+            <img src="{{ project.image.url }}" alt="">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description|truncatewords:20 }}</p>
+
+            <div class="project-buttons">
+                <a href="{% url 'project_detail' project.id %}" class="btn">
+                    View Details
+                </a>
+
+                <a href="{{ project.github_link }}" target="_blank" class="btn-outline">
+                    GitHub
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        {{ form.name.errors }}
+        {{ form.name }}
+
+        {{ form.email.errors }}
+        {{ form.email }}
+
+        {{ form.number.errors }}
+        {{ form.number }}
+
+        {{ form.content.errors }}
+        {{ form.content }}
+
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+
+</section>
+{% endblock %}
